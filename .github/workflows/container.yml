@@ -6,6 +6,15 @@ on:
       - master
     paths:
       - "container/**"
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Container Auto Trigger"
+        required: true
+        default: "warning"
+      tags:
+        description: "Tag for Manual Retrigger"
+        required: true
 defaults:
   run:
     working-directory: container
