@@ -5,7 +5,7 @@ import App from "./App";
 
 const mountModule = (
   htmlElement,
-  { onNavigate, defaultHistory, initialPath }
+  { onSignIn, onNavigate, defaultHistory, initialPath }
 ) => {
   const history =
     defaultHistory ||
@@ -17,7 +17,7 @@ const mountModule = (
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App history={history} />, htmlElement);
+  ReactDOM.render(<App onSignIn={onSignIn} history={history} />, htmlElement);
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
@@ -30,7 +30,7 @@ const mountModule = (
 };
 
 if (process.env.NODE_ENV === "development") {
-  const moduleRoot = document.querySelector("#_marketing-dev");
+  const moduleRoot = document.querySelector("#_auth-dev");
   if (moduleRoot) {
     /* runing application in isolation */
     mountModule(moduleRoot, { defaultHistory: createBrowserHistory() });

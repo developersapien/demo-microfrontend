@@ -1,13 +1,13 @@
-import { mountModule as mountMarketingApp } from "marketing/MarketingApp";
+import { mountModule as mountAuthApp } from "auth/AuthApp";
 import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 
-export default () => {
+export default ({ onSignIn }) => {
   const ref = useRef(null);
   const history = useHistory();
 
   useEffect(() => {
-    const { onParentNavigate } = mountMarketingApp(ref.current, {
+    const { onParentNavigate } = mountAuthApp(ref.current, {
       initialPath: history.location.pathname,
       onNavigate: ({ pathname: nextPathName }) => {
         const { pathname } = history.location;
@@ -15,6 +15,7 @@ export default () => {
           history.push(nextPathName);
         }
       },
+      onSignIn,
     });
 
     history.listen(onParentNavigate);
