@@ -28,7 +28,7 @@ jobs:
 
       - uses: idlefingers/do-space-sync-action@master
         with:
-          args: --acl public-read
+          args: s3 sync dist --acl public-read
         env:
           SOURCE_DIR: "./auth/latest"
           SPACE_NAME: ${{ secrets.DO_SPACE_NAME}}

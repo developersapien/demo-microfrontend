@@ -35,6 +35,7 @@ jobs:
           aws-region: ${{ secrets.DO_REGION}}
         env:
           SPACE_NAME: ${{ secrets.DO_SPACE_NAME}}
+          SPACE_REGION: ${{ secrets.DO_REGION}}
       - run: aws s3 sync dist s3://${SPACE_NAME} \
           --follow-symlinks \
           --delete \
