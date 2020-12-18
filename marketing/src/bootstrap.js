@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
+import { defineCustomElements } from "carpart-ui-webcomp/dist/loader";
+
 const mountModule = (
   htmlElement,
   { onNavigate, defaultHistory, initialPath }
@@ -36,5 +38,6 @@ if (process.env.NODE_ENV === "development") {
     mountModule(moduleRoot, { defaultHistory: createBrowserHistory() });
   }
 }
+defineCustomElements(window);
 
 export { mountModule };

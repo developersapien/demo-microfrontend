@@ -7,6 +7,7 @@ import Pricing from "../components/Pricing";
 export default ({ history }) => {
   return (
     <div>
+      <uc-side-drawer></uc-side-drawer>
       <StylesProvider>
         <Router history={history}>
           <Switch>
