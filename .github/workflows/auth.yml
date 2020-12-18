@@ -26,11 +26,12 @@ jobs:
       - run: npm install
       - run: npm run build
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - uses: idlefingers/do-space-sync-action@master
         with:
-          aws-access-key-id: ${{secrets.DO_SPACE_ACCESS_KEY}}
-          aws-secret-access-key: ${{secrets.DO_SPACE_SECRET}}
-          aws-region: ${{secrets.DO_REGION}}
-      - name: List AWS
-        run: aws s3 ls
+          args: --acl public-read
+        env:
+          SOURCE_DIR: "./"
+          SPACE_NAME: askorbik
+          SPACE_REGION: fra1
+          SPACE_ACCESS_KEY_ID: UIYNTAF4BTN6HHDGYETX
+          SPACE_SECRET_ACCESS_KEY: dQsg1xn7HRIO3xhj1LBsk/Gc0RY3ITXHTR1H6sjdKB0
